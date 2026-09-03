@@ -15,3 +15,7 @@ def medicos(request):
 
 def citas(request):
     return render(request, "api_personas/citas.html")
+
+
+def tratamientos(request):
+    return render(request, "api_personas/tratamientos.html")
