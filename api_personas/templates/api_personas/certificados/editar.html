@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Certificado</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.10);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #1e3a8a;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+
+        .acciones {
+            margin-top: 25px;
+            display: flex;
+            gap: 12px;
+        }
+
+        button {
+            flex: 1;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .cancelar {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            background: #e5e7eb;
+            color: #374151;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .cancelar:hover {
+            background: #d1d5db;
+        }
+
+        .volver {
+            display: inline-block;
+            margin-top: 18px;
+            text-decoration: none;
+            color: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Sistema Kaizen</h1>
+        <p>Gestión de Certificados</p>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>Editar Certificado</h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <label>Alumno</label>
+
+                <select name="alumno" required>
+                    {% for alumno in alumnos %}
+                        <option value="{{ alumno.id }}"
+                            {% if alumno.id == certificado.alumno.id %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ alumno.nombre }} {{ alumno.apellido }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+
+                <label>Curso</label>
+
+                <select name="curso" required>
+                    {% for curso in cursos %}
+                        <option value="{{ curso.id }}"
+                            {% if curso.id == certificado.curso.id %}
+                                selected
+                            {% endif %}
+                        >
+                            {{ curso.nombre }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+
+                <label>Código del certificado</label>
+
+                <input
+                    type="text"
+                    name="codigo_certificado"
+                    value="{{ certificado.codigo_certificado }}"
+                    required
+                >
+
+
+                <div class="acciones">
+
+                    <button type="submit">
+                        Guardar cambios
+                    </button>
+
+                    <a href="/certificados/" class="cancelar">
+                        Cancelar
+                    </a>
+
+                </div>
+
+            </form>
+
+            <a href="/" class="volver">
+                ← Volver al inicio
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

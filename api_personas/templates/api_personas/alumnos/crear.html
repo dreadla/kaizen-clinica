@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Alumno - Kaizen</title>
+</head>
+<body>
+
+    <h1>Registrar Alumno</h1>
+
+    <p>
+        <a href="/alumnos/">← Volver a la lista</a>
+    </p>
+
+    <hr>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <p>
+            <label>Nombre:</label><br>
+            <input type="text" name="nombre" required>
+        </p>
+
+        <p>
+            <label>Apellido:</label><br>
+            <input type="text" name="apellido" required>
+        </p>
+
+        <p>
+            <label>Email:</label><br>
+            <input type="email" name="email" required>
+        </p>
+
+        <p>
+            <label>Teléfono:</label><br>
+            <input type="text" name="telefono">
+        </p>
+
+        <p>
+            <label>Fecha de nacimiento:</label><br>
+            <input type="date" name="fecha_nacimiento" required>
+        </p>
+
+        <button type="submit">Guardar alumno</button>
+    </form>
+
+</body>
+</html>

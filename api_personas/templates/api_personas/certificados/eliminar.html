@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Certificado</title>
+</head>
+<body>
+
+<h1>Eliminar Certificado</h1>
+
+<p>
+    ¿Seguro que deseas eliminar el certificado
+    <strong>{{ certificado.codigo_certificado }}</strong>?
+</p>
+
+<p>
+    Alumno: {{ certificado.alumno }}
+</p>
+
+<p>
+    Curso: {{ certificado.curso }}
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <button type="submit">
+        Sí, eliminar
+    </button>
+</form>
+
+<p>
+    <a href="/certificados/">Cancelar</a>
+</p>
+
+</body>
+</html>

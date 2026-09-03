@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnos - Sistema Kaizen</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 34px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+            padding: 14px;
+            text-align: left;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .nombre {
+            font-weight: bold;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 8px;
+        }
+
+        .editar {
+            background: #0ea5e9;
+            color: white;
+            padding: 7px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .eliminar {
+            background: #dc2626;
+            color: white;
+            padding: 7px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .vacio {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Alumnos</h1>
+    <p>Sistema Kaizen - Gestión Académica</p>
+</header>
+
+<div class="container">
+
+    <div class="top-bar">
+
+        <a href="/" class="btn btn-secondary">
+            ← Volver al inicio
+        </a>
+
+        <a href="/alumnos/nuevo/" class="btn btn-primary">
+            + Agregar alumno
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Fecha de nacimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for alumno in alumnos %}
+
+                <tr>
+
+                    <td>{{ alumno.id }}</td>
+
+                    <td class="nombre">
+                        {{ alumno.nombre }}
+                    </td>
+
+                    <td>
+                        {{ alumno.apellido }}
+                    </td>
+
+                    <td>
+                        {{ alumno.email }}
+                    </td>
+
+                    <td>
+                        {{ alumno.telefono }}
+                    </td>
+
+                    <td>
+                        {{ alumno.fecha_nacimiento }}
+                    </td>
+
+                    <td>
+                        <div class="acciones">
+
+                            <a
+                                href="/alumnos/{{ alumno.id }}/editar/"
+                                class="editar"
+                            >
+                                Editar
+                            </a>
+
+                            <a
+                                href="/alumnos/{{ alumno.id }}/eliminar/"
+                                class="eliminar"
+                            >
+                                Eliminar
+                            </a>
+
+                        </div>
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="7" class="vacio">
+                        No hay alumnos registrados.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

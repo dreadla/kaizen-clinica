@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cursos - Sistema Kaizen</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 34px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: white;
+            padding: 14px;
+            text-align: left;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .curso {
+            font-weight: bold;
+        }
+
+        .precio {
+            font-weight: bold;
+            color: #15803d;
+        }
+
+        .acciones {
+            display: flex;
+            gap: 8px;
+        }
+
+        .editar {
+            background: #0ea5e9;
+            color: white;
+            padding: 7px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .eliminar {
+            background: #dc2626;
+            color: white;
+            padding: 7px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+
+        .vacio {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Cursos</h1>
+    <p>Sistema Kaizen - Gestión Académica</p>
+</header>
+
+<div class="container">
+
+    <div class="top-bar">
+
+        <a href="/" class="btn btn-secondary">
+            ← Volver al inicio
+        </a>
+
+        <a href="/cursos/nuevo/" class="btn btn-primary">
+            + Agregar curso
+        </a>
+
+    </div>
+
+    <div class="card">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Curso</th>
+                    <th>Descripción</th>
+                    <th>Duración</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for curso in cursos %}
+
+                <tr>
+
+                    <td>
+                        {{ curso.id }}
+                    </td>
+
+                    <td class="curso">
+                        {{ curso.nombre }}
+                    </td>
+
+                    <td>
+                        {{ curso.descripcion }}
+                    </td>
+
+                    <td>
+                        {{ curso.duracion }} horas
+                    </td>
+
+                    <td class="precio">
+                        ${{ curso.precio }}
+                    </td>
+
+                    <td>
+
+                        <div class="acciones">
+
+                            <a
+                                href="/cursos/{{ curso.id }}/editar/"
+                                class="editar"
+                            >
+                                Editar
+                            </a>
+
+                            <a
+                                href="/cursos/{{ curso.id }}/eliminar/"
+                                class="eliminar"
+                            >
+                                Eliminar
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="6" class="vacio">
+                        No hay cursos registrados.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

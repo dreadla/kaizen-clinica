@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Certificado</title>
+</head>
+<body>
+
+<h1>Registrar Certificado</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <p>
+        Alumno:<br>
+        <select name="alumno" required>
+            <option value="">Seleccione un alumno</option>
+
+            {% for alumno in alumnos %}
+                <option value="{{ alumno.id }}">
+                    {{ alumno.nombre }} {{ alumno.apellido }}
+                </option>
+            {% endfor %}
+        </select>
+    </p>
+
+    <p>
+        Curso:<br>
+        <select name="curso" required>
+            <option value="">Seleccione un curso</option>
+
+            {% for curso in cursos %}
+                <option value="{{ curso.id }}">
+                    {{ curso.nombre }}
+                </option>
+            {% endfor %}
+        </select>
+    </p>
+
+    <p>
+        Código del certificado:<br>
+        <input
+            type="text"
+            name="codigo_certificado"
+            placeholder="Ejemplo: CERT-2026-001"
+            required>
+    </p>
+
+    <button type="submit">Guardar certificado</button>
+</form>
+
+<p>
+    <a href="/certificados/">Cancelar</a>
+</p>
+
+</body>
+</html>
