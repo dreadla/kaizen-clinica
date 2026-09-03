@@ -15,7 +15,6 @@
             background: #f4f6fb;
         }
 
-
         header {
             background: #2563eb;
             color: white;
@@ -23,18 +22,15 @@
             text-align: center;
         }
 
-
         header h1 {
             margin: 0;
             font-size: 38px;
         }
 
-
         .contenido {
             text-align: center;
             padding: 40px;
         }
-
 
         .tarjetas {
             display: flex;
@@ -44,54 +40,39 @@
             margin-top: 30px;
         }
 
-
         .tarjeta {
-
             background: white;
             width: 280px;
             padding: 25px;
             border-radius: 15px;
-
             box-shadow: 0px 5px 15px #cccccc;
-
         }
-
 
         .tarjeta h2 {
             color: #2563eb;
         }
 
-
         .boton {
-
             display: inline-block;
             margin-top: 15px;
-
             background: #2563eb;
             color: white;
-
             padding: 12px 25px;
-
             border-radius: 8px;
-
             text-decoration: none;
-
         }
 
+        .boton:hover {
+            background: #1d4ed8;
+        }
 
         footer {
-
             background: #111827;
-            color:white;
-
-            text-align:center;
-
-            padding:20px;
-
-            margin-top:40px;
-
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
         }
-
 
     </style>
 
@@ -120,15 +101,21 @@
 
 
 
+<div class="tarjetas">
+
+
+
 <div class="tarjeta">
 
 <h2>Pacientes</h2>
 
 <p>Registro y administración de pacientes.</p>
 
-<a class="boton" href="#">Ingresar</a>
+<a class="boton" href="/pacientes/">Ingresar</a>
 
 </div>
+
+
 
 
 <div class="tarjeta">
@@ -137,18 +124,20 @@
 
 <p>Gestión del personal médico.</p>
 
-<a class="boton" href="#">Ingresar</a>
+<a class="boton" href="/medicos/">Ingresar</a>
 
 </div>
 
 
+
+
 <div class="tarjeta">
 
-<h2>Citas Médicas</h2>
+<h2>Citas</h2>
 
-<p>Control de consultas y horarios.</p>
+<p>Control de citas médicas.</p>
 
-<a class="boton" href="#">Ingresar</a>
+<a class="boton" href="/citas/">Ingresar</a>
 
 </div>
 
@@ -170,6 +159,7 @@ Sistema Kaizen Clínica
 Desarrollado con Django
 
 </footer>
+
 
 
 </body>
