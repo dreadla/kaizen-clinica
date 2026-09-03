@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from .models import Paciente, Medico, Cita
 
 
 def inicio(request):
@@ -7,15 +6,12 @@ def inicio(request):
 
 
 def pacientes(request):
-    datos = Paciente.objects.all()
-    return render(request, "api_personas/pacientes.html", {"pacientes": datos})
+    return render(request, "api_personas/pacientes.html")
 
 
 def medicos(request):
-    datos = Medico.objects.all()
-    return render(request, "api_personas/medicos.html", {"medicos": datos})
+    return render(request, "api_personas/medicos.html")
 
 
 def citas(request):
-    datos = Cita.objects.all()
-    return render(request, "api_personas/citas.html", {"citas": datos})
+    return render(request, "api_personas/citas.html")
